@@ -1,0 +1,59 @@
+# Snakemake workflow to fetch pubmed PMCIDs
+
+rule all:
+    input:
+        "oa_file_list.txt",
+        "2018_12_ids",
+        "2018_paper_count.txt"
+
+rule wget_oa:
+    output:
+        "oa_file_list.txt"
+    shell:
+        "wget https://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_file_list.txt"
+        
+rule grep_oa:
+    input:
+        "oa_file_list.txt"
+    output:
+        "2018_12_ids"
+    shell:
+        """
+        grep ". 2018 Jan" oa_file_list.txt | cut -f 3 > 2018_1_ids &&
+        grep ". 2018 Feb" oa_file_list.txt | cut -f 3 > 2018_2_ids &&
+        grep ". 2018 Mar" oa_file_list.txt | cut -f 3 > 2018_3_ids &&
+        grep ". 2018 Apr" oa_file_list.txt | cut -f 3 > 2018_4_ids &&
+        grep ". 2018 May" oa_file_list.txt | cut -f 3 > 2018_5_ids &&
+        grep ". 2018 Jun" oa_file_list.txt | cut -f 3 > 2018_6_ids &&
+        grep ". 2018 Jul" oa_file_list.txt | cut -f 3 > 2018_7_ids &&
+        grep ". 2018 Aug" oa_file_list.txt | cut -f 3 > 2018_8_ids &&
+        grep ". 2018 Sep" oa_file_list.txt | cut -f 3 > 2018_9_ids &&
+        grep ". 2018 Oct" oa_file_list.txt | cut -f 3 > 2018_10_ids &&
+        grep ". 2018 Nov" oa_file_list.txt | cut -f 3 > 2018_11_ids &&
+        grep ". 2018 Dec" oa_file_list.txt | cut -f 3 > 2018_12_ids
+        """
+        
+rule paper_count:
+    input:
+        "2018_12_ids"
+    output:
+        "2018_paper_count.txt"
+    shell:
+        """
+        wc -l 2018_1_ids > 2018_paper_count.txt &&
+        wc -l 2018_2_ids >> 2018_paper_count.txt &&
+        wc -l 2018_3_ids >> 2018_paper_count.txt &&
+        wc -l 2018_4_ids >> 2018_paper_count.txt &&
+        wc -l 2018_5_ids >> 2018_paper_count.txt &&
+        wc -l 2018_6_ids >> 2018_paper_count.txt &&
+        wc -l 2018_7_ids >> 2018_paper_count.txt &&
+        wc -l 2018_8_ids >> 2018_paper_count.txt &&
+        wc -l 2018_9_ids >> 2018_paper_count.txt &&
+        wc -l 2018_10_ids >> 2018_paper_count.txt &&
+        wc -l 2018_11_ids >> 2018_paper_count.txt &&
+        wc -l 2018_12_ids >> 2018_paper_count.txt
+        """        
+        
+        
+        
+    

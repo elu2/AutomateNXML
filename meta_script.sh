@@ -1,7 +1,7 @@
 # Changes years of all scripts
 year=2017
 
-sed -i "s/year=.*/year=${year}/g" main_script.pbs
+sed -i "s/year=.*/year=${year}/g" main_script.slurm
 sed -i "s/year=.*/year=${year}/g" auto_id.sh
 sed -i "s/year=.*/year=${year}/g" prereqs.sh
 sed -i "s/year=.*/year=${year}/g" nxml_runner.sh

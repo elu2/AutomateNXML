@@ -6,7 +6,7 @@ for month in {1..12}
 do
 
 # Put pbs script to run snakemake into specified directory.
-sed "s/0000_0/${year}_${month}/g" base_smake_script.pbs > /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/smake_script.pbs
+sed "s/0000_0/${year}_${month}/g" base_smake_script.slurm > /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/smake_script.slurm
 
 # Put fetch_nxml.py into specified directory's papers directory.
 cp fetch_nxml.py /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/papers/

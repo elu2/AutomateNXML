@@ -1,21 +1,23 @@
-#PBS -N make_jars
-#PBS -W group_list=guangyao
-#PBS -q standard
-#PBS -l select=1:ncpus=7:mem=42gb:pcmem=6gb
-#PBS -l walltime=3:0:0
+#!/bin/bash
+#SBATCH --job-name=make_jars
+#SBATCH --mincpus=7
+#SBATCH --ntasks=1
+#SBATCH --mem=42GB
+#SBATCH --time=96:00:00
+#SBATCH --partition=standard
+#SBATCH --account=guangyao
 
 cd /xdisk/guangyao/REACH2/mk_jars/base_reach/reach/
 
-module load scala/2.12/2.12.4
-module load java/8/1.8
-module load sbt/1/1.0.3
+module load scalapack/2.0.2
+module load sbt/1.3.13
 
 # Edit year here:
-year=2018
+year=2015
 
 # Edit month range here {x..y} until 12:
 for month in {1..12}
-do 
+do
 
 # Makes dir's for months in year
 mkdir /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}

@@ -20,27 +20,27 @@ for month in {1..12}
 do
 
 # Makes dir's for months in year
-mkdir /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}
+mkdir /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/${year}_${month}
 
 # and puts a papers dir in it
-mkdir /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/papers
+mkdir /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/${year}_${month}/papers
 
 # edits the base slurm script...
 # changes job name...
 sed -i 's|#SBATCH --job-name=.*|#SBATCH --job-name=REACH_'"${year}"'_'"${month}"'|' slurm_script
 # ... and directory to cd to fat jar...
-sed -i 's|cd /xdisk/.*|cd /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/'"${year}"'_'"${month}"'|' slurm_script
+sed -i 's|cd /xdisk/.*|cd /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/'"${year}"'_'"${month}"'|' slurm_script
 
 # ... and copies the edited slurm script to be in the directory as well
-cp slurm_script /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/
+cp slurm_script /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/${year}_${month}/
 
 # Replace root path in application.conf
-sed -i 's|/xdisk/guangyao/.*|/xdisk/guangyao/REACH2/mk_jars/all_fat_jars/'"${year}"'_'"${month}"'|' main/src/main/resources/application.conf
+sed -i 's|/xdisk/guangyao/.*|/xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/'"${year}"'_'"${month}"'|' main/src/main/resources/application.conf
 
 # Construct fat jar
 sbt assembly
 
 # Move the fat jar out
-mv target/scala-2.12/*FAT.jar /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/
+mv target/scala-2.12/*FAT.jar /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/${year}_${month}/
 
 done

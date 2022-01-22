@@ -7,7 +7,7 @@
 #SBATCH --partition=standard
 #SBATCH --account=guangyao
 
-cd /xdisk/guangyao/REACH2/mk_jars/base_reach/reach/
+cd /xdisk/guangyao/elu2/RV/mk_jars/base_reach/reach/
 
 module load scalapack/2.0.2
 module load sbt/1.3.13

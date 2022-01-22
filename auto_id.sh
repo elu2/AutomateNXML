@@ -8,6 +8,6 @@ snakemake -s  snakefile.pmcid
 for month in {1..12}
 do
 
-mv ${year}_${month}_ids /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/${year}_${month}/papers/
+mv ${year}_${month}_ids /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/${year}_${month}/papers/
 
 done

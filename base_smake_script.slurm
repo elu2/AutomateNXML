@@ -7,7 +7,7 @@
 #SBATCH --partition=standard
 #SBATCH --account=guangyao
 
-cd /xdisk/guangyao/REACH2/mk_jars/all_fat_jars/0000_0/papers/
+cd /xdisk/guangyao/elu2/RV/mk_jars/all_fat_jars/0000_0/papers/
 conda init bash
 source ~/.bashrc
 conda activate /home/u26/elu2/.conda/envs/snakemake_env

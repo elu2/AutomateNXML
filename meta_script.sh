@@ -1,5 +1,5 @@
 # Changes years of all scripts
-year=2017
+year=2020
 
 sed -i "s/year=.*/year=${year}/g" main_script.slurm
 sed -i "s/year=.*/year=${year}/g" auto_id.sh
